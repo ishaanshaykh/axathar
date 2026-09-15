@@ -1,69 +1,42 @@
+import { PortfolioSection } from "@/components/sections/Portfolio";
 import Image from "next/image";
+import { HeroField } from "@/components/webgl/HeroField";
+import { Eyebrow } from "@/components/ui/Controls";
+import { Reveal } from "@/components/motion/Reveal";
+import { Marquee } from "@/components/motion/Bits";
+import { TransitionLink } from "@/components/motion/Transition";
+import { SectionHead } from "@/components/sections/Heads";
+import { BigCTA } from "@/components/sections/Social";
+import { ServiceCard } from "@/components/sections/Services";
+import { services } from "@/data/services";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <>
+    <section className="globe-hero relative overflow-hidden">
+      <HeroField className="hero-globe" />
+      <div className="wrap relative pb-16 pt-3">
+        <div className="flex items-center justify-between"><Eyebrow>AXATHAR — Your technology partner</Eyebrow><p className="t-mono-num hidden text-xs text-[var(--color-muted)] md:block">CONNECTED. SECURE. READY.</p></div>
+        <h1 className="t-hero globe-headline mt-8"><span className="globe-title-line"><span>Your tech partner.</span></span><span className="globe-title-line brand-gradient"><span>Without limits.</span></span></h1>
+        <div className="mx-auto mt-8 max-w-2xl text-center"><p className="t-lead text-[var(--color-muted)]">From the systems that power your workplace to the digital experiences that grow your business. IT, cloud, security and automation — connected by AXATHAR.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><TransitionLink href="/services" className="brand-button">Explore our services <span aria-hidden="true">↗</span></TransitionLink><TransitionLink href="/contact" className="secondary-button">Let’s talk</TransitionLink></div></div>
+      </div>
+    </section>
+    <Marquee slow className="border-y border-[var(--color-line)] py-5"><p className="whitespace-nowrap px-5 text-xs tracking-[.15em] text-[var(--color-muted)]">INFRASTRUCTURE · CLOUD · MANAGED IT · SECURITY · AUTOMATION · DIGITAL · EVENTS · </p></Marquee>
+    <PortfolioSection />
+    <section className="wrap py-20 md:py-28">
+      <SectionHead eyebrow="What we do" title="The right technology. For every part of your business." lead="Build a dependable foundation, protect what matters and make everyday work simpler. Choose the support you need." link={{label:"All services",href:"/services"}} />
+      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{services.slice(0,7).map((service,index) => <ServiceCard key={service.slug} service={service} index={index} />)}</div>
+    </section>
+    <section className="wrap pb-20">
+      <div className="brand-panel grid gap-12 rounded-[2rem] border border-[var(--color-line)] p-8 md:grid-cols-2 md:p-14">
+        <div className="flex flex-col justify-between"><div><Eyebrow>One connected partner</Eyebrow><h2 className="t-h2 mt-5">Less complexity.<br /><span className="brand-gradient">More possibility.</span></h2></div><Image src="/axathar-logo.png" alt="AXATHAR infinity symbol" width={2103} height={748} sizes="(max-width: 768px) 75vw, 400px" className="mt-10 h-auto w-full max-w-sm" /></div>
+        <div className="space-y-7">{[
+          ['Build the foundation','Equip your team with reliable devices, networks and cloud systems that work together.'],
+          ['Protect the everyday','Bring security, backup and managed support into the way your business operates.'],
+          ['Create what’s next','Connect workflows, strengthen your digital presence and deliver memorable experiences.'],
+        ].map(([title,body],i) => <Reveal key={title}><div className="border-b border-[var(--color-line)] pb-6"><span className="t-mono-num text-xs text-[var(--color-accent)]">0{i+1}</span><h3 className="font-display mt-3 text-2xl">{title}</h3><p className="t-body mt-3 text-[var(--color-muted)]">{body}</p></div></Reveal>)}</div>
+      </div>
+    </section>
+    <section className="wrap pb-20"><SectionHead eyebrow="Specialist support" title="Go further with your technology." lead="Focused services for stronger security, audit preparation and a more productive workplace." /><div className="mt-10 grid gap-5 md:grid-cols-3">{services.slice(7).map((service,index) => <ServiceCard key={service.slug} service={service} index={index+7} />)}</div></section>
+    <BigCTA />
+  </>;
 }
