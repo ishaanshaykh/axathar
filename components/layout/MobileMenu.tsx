@@ -79,7 +79,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         <TransitionLink href="/contact" onClick={onClose} className="mt-8 flex items-center justify-center gap-3 rounded-full bg-[var(--color-lime)] py-4 font-semibold text-black">
           Message us <span aria-hidden="true">→→</span>
         </TransitionLink>
-        <p className="mt-6 text-center text-sm text-white/50">help@axathar.in</p>
+        <p className="mt-6 text-center text-sm text-white/50">contact@axathar.com</p>
       </nav>
       <style>{`@keyframes ax-in { from { opacity: 0; transform: translateY(24px);} to { opacity: 1; transform: none; } }`}</style>
     </div>

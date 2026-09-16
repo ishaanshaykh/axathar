@@ -2,8 +2,8 @@ export const SITE = {
   name: "AXATHAR",
   tagline: "Your technology partner. Engineered.",
   url: "https://axathar.com",
-  email: "help@axathar.in",
-  salesEmail: "help@axathar.in",
+  email: "contact@axathar.com",
+  salesEmail: "contact@axathar.com",
   phone: "+91 78638 78698",
   locations: [
     { city: "India", label: "HQ · India", detail: "Serving clients pan-India" },
